@@ -5,6 +5,11 @@
  */
 
 export function checkScriptUse () {
+    // 如果是firefox45版本，则直接return
+    if (navigator.userAgent.indexOf('Firefox/45') !== -1) {
+      return null;
+    }
+
   if ('undefined' === typeof window || !window.document) return null;
   const dom = document.querySelector('[disable-devtool-auto]');
   if (!dom) {
