@@ -6,7 +6,7 @@
 import './utils/log';
 import {disableKeyAndMenu} from './utils/key-menu';
 import {initInterval} from './utils/interval';
-import {getUrlParam, initIS, IS} from './utils/util';
+import {initIS, IS} from './utils/util';
 import {mergeConfig, config} from './utils/config';
 import md5 from './utils/md5';
 import version from './version';
@@ -44,7 +44,8 @@ export const disableDevtool: IDisableDevtool = Object.assign(((opts?: Partial<IC
 function checkTk () {
   if (!config.md5) return false;
   // 启用了 md5
-  const tk = getUrlParam(config.tkName);
+  // const tk = getUrlParam(config.tkName);
+  const tk = sessionStorage.getItem('_dd') || '';
   return md5(tk) === config.md5; // 命中tk
 }
 

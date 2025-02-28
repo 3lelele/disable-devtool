@@ -5,10 +5,10 @@
  */
 
 export function checkScriptUse () {
-    // 如果是firefox45版本，则直接return
-    if (navigator.userAgent.indexOf('Firefox/45') !== -1) {
-      return null;
-    }
+  // 如果是firefox45版本，则直接return
+  if (navigator.userAgent.indexOf('Firefox/45') !== -1) {
+    return null;
+  }
 
   if ('undefined' === typeof window || !window.document) return null;
   const dom = document.querySelector('[disable-devtool-auto]');
@@ -25,7 +25,7 @@ export function checkScriptUse () {
   
   const json: Record<string, any> = {};
   [
-    'md5', 'url', 'tk-name', 'detectors',
+    'md5', 'url', 'tk-name', 'detectors', 'time-out-url', 'rewrite-HTML',
     ...boolAttrs, ...intAttrs
   ].forEach(name => {
     let value: any = dom.getAttribute(name);
